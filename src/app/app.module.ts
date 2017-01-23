@@ -10,6 +10,8 @@ import { ApiService } from './shared';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import {RegisterComponent} from "./register/index";
+import {AlertService, UserService} from "./services/index";
 
 @NgModule({
   imports: [
@@ -21,10 +23,13 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    RegisterComponent
   ],
   providers: [
-    ApiService
+    ApiService,
+    AlertService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
