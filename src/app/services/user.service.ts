@@ -7,7 +7,7 @@ export class UserService {
     constructor(private http: Http) { }
 
     create(user: User) {
-        return this.http.post('/api/secvurity/signup', user).map((response: Response) => response.json());
+        return this.http.post('/api/security/signup', user).map((response: Response) => response.json());
     }
 
     // private helper methods

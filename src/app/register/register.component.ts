@@ -10,25 +10,30 @@ import {AlertService} from "../services/alert.service";
 export class RegisterComponent {
     model: any = {};
 
+    loading = false;
+
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService) { }
 
     register() {
-        this.model.isActive = true;
-        this.model.isParent = true;
-        console.log(this.model.firstName)
-        console.log(this.model.isActive)
-        console.log(this.model.birthday)
+        this.loading = true;
+
+        let locale = require('browser-locale');
+
+        //get user's locale
+        this.model.locale = locale()
+
         this.userService.create(this.model)
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/login']);
                 },
                 error => {
                     this.alertService.error(error);
-                    console.log(error)
+                    this.loading = false;
                 });
     }
 }
