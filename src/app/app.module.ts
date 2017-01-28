@@ -6,10 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ApiService } from './shared';
+import { AlertComponent } from './_directives/index'
+import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import {RegisterComponent} from "./register/index";
+import {AlertService, UserService} from "./services/index";
 
 @NgModule({
   imports: [
@@ -21,10 +24,14 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    RegisterComponent,
+    LoginComponent,
+    AlertComponent
   ],
   providers: [
-    ApiService
+    AlertService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
