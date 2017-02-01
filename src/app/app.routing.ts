@@ -6,6 +6,8 @@ import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
+import {BonusTypeList} from "./components/model/bonusType/bonusTypeList/bonusTypeList.component";
+import {BonusTypeUpdate} from "./components/model/bonusType/updateForm/bonusTypeUpdate.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'bonusType/list', component: BonusTypeList},
   { path: 'main', component: NavigationComponent, outlet:"navigation"},
+  { path: 'bonusType/update/:id', component: BonusTypeUpdate },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'login' }

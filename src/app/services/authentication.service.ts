@@ -31,9 +31,7 @@ export class AuthenticationService {
                 data => {
 
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('access_token', data.access_token);
-
-                console.log(data.access_token)
+                localStorage.setItem('tokenData', JSON.stringify(data));
 
                 this.loggedIn = true;
 
@@ -49,7 +47,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('access_token');
+        localStorage.removeItem('tokenData');
         this.loggedIn = false;
         this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
     }

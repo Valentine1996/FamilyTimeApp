@@ -12,9 +12,11 @@ import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import {RegisterComponent} from "./register/index";
-import {AlertService, UserService, AuthenticationService} from "./services/index";
+import {AlertService, UserService, AuthenticationService, BonusTypeService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
+import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate} from "./components/model/index";
+import {HttpClient} from "./client/http.client";
 
 @NgModule({
   imports: [
@@ -30,13 +32,18 @@ import {NavigationComponent} from "./navigation/navigation.component";
     RegisterComponent,
     LoginComponent,
     AlertComponent,
-    NavigationComponent
+    NavigationComponent,
+    BonusTypeList,
+    BonusTypeComponent,
+    BonusTypeUpdate
   ],
   providers: [
     AlertService,
     UserService,
     AuthenticationService,
-    AuthGuard
+    AuthGuard,
+    HttpClient,
+    BonusTypeService
   ],
   bootstrap: [AppComponent]
 })
