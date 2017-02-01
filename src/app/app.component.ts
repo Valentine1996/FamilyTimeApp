@@ -13,5 +13,4 @@ export class AppComponent {
   constructor(public authService: AuthenticationService) {
     console.log(authService)
   }
-
 }
