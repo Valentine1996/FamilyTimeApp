@@ -1,25 +1,25 @@
-<div class="col-md-offset-2 col-md-7">
+<div class="col-md-offset-2 col-md-8">
     <h2 align="center">Registration</h2>
     <form class="form-horizontal"class="form-horizontal" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <div class="form-group">
-            <label for="firstName" class="control-label col-md-3">First Name</label>
+            <label for="firstName" class="control-label col-md-3">First name</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-                <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+                <div *ngIf="f.submitted && !firstName.valid" class="help-block">First name is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="lastName" class="control-label col-md-3">Last Name</label>
+            <label for="lastName" class="control-label col-md-3">Last name</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
-                <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+                <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last name is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="middleName" class="control-label col-md-3">Middle Name</label>
+            <label for="middleName" class="control-label col-md-3">Middle name</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="middleName" name="middleName" [(ngModel)]="model.middleName" #middleName="ngModel" required />
-                <div *ngIf="f.submitted && !middleName.valid" class="help-block">MiddleName Name is required</div>
+                <div *ngIf="f.submitted && !middleName.valid" class="help-block">Middle name is required</div>
             </div>
         </div>
         <div class="form-group">
@@ -53,7 +53,7 @@
             <label for="familyName" class="control-label col-md-3">Family name</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="familyName" name="familyName" [(ngModel)]="model.familyName" #familyName="ngModel" required />
-                <div *ngIf="f.submitted && !username.valid" class="help-block">Family is required</div>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Family name is required</div>
             </div>
         </div>
         <div class="form-group">

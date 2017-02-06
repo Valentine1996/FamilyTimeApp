@@ -15,7 +15,7 @@ import {RegisterComponent} from "./register/index";
 import {AlertService, UserService, AuthenticationService, BonusTypeService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
-import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate} from "./components/model/index";
+import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate, BonusTypeCreate} from "./components/model/index";
 import {HttpClient} from "./client/http.client";
 
 @NgModule({
@@ -35,7 +35,8 @@ import {HttpClient} from "./client/http.client";
     NavigationComponent,
     BonusTypeList,
     BonusTypeComponent,
-    BonusTypeUpdate
+    BonusTypeUpdate,
+    BonusTypeCreate
   ],
   providers: [
     AlertService,

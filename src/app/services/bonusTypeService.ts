@@ -22,7 +22,7 @@ export class BonusTypeService{
     }
 
     update(bonusType: BonusType) {
-        return this.http.put('/api/bonusType' + bonusType.id, bonusType).map((response: Response) => response.json());
+        return this.http.put('/api/bonusType/' + bonusType.id, bonusType).map((response: Response) => response.json());
     }
 
     delete(id: number) {
