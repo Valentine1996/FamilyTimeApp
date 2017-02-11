@@ -1,5 +1,4 @@
-export class User {
-    familyName: String;
+export class InternalUser {
     firstName: string;
     lastName: string;
     middleName: string;
@@ -7,5 +6,6 @@ export class User {
     password: string;
     birthday: Date;
     gender: boolean;
+    isParent: boolean;
     locale: string;
 }
