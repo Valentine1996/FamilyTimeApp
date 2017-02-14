@@ -11,11 +11,11 @@ import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-import {RegisterComponent} from "./register/index";
+import {RegisterComponent, InternalRegisterComponent} from "./register/index";
 import {AlertService, UserService, AuthenticationService, BonusTypeService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
-import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate, BonusTypeCreate} from "./components/model/index";
+import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate, BonusTypeCreate, InternalUserList} from "./components/model/index";
 import {HttpClient} from "./client/http.client";
 
 @NgModule({
@@ -36,7 +36,9 @@ import {HttpClient} from "./client/http.client";
     BonusTypeList,
     BonusTypeComponent,
     BonusTypeUpdate,
-    BonusTypeCreate
+    BonusTypeCreate,
+    InternalRegisterComponent,
+    InternalUserList
   ],
   providers: [
     AlertService,
@@ -50,19 +52,4 @@ import {HttpClient} from "./client/http.client";
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef) {}
-  hmrOnInit(store) {
-    console.log('HMR store', store);
-  }
-  hmrOnDestroy(store) {
-    let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // recreate elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // remove styles
-    removeNgStyles();
-  }
-  hmrAfterDestroy(store) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
 }

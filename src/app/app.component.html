@@ -12,7 +12,8 @@
             <ul class="nav navbar-nav">
                 <li><a [routerLink]="['']" *ngIf='authService.isLoggedIn()'>Home</a></li>
                 <li><a [routerLink]="['about']" *ngIf='!authService.isLoggedIn()'>About</a></li>
-                <!--<li><a [routerLink]="[{outlets: {primary: 'about', navigation: 'main'}}]">Home</a></li>-->
+                <li><a [routerLink]="['internalUser/create']" *ngIf='authService.isLoggedIn()'>Regist additional user</a></li>
+                <li><a [routerLink]="['internalUser/list']" *ngIf='authService.isLoggedIn()'>Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a [routerLink]="['register']" *ngIf='!authService.isLoggedIn()'>Register</a></li>
