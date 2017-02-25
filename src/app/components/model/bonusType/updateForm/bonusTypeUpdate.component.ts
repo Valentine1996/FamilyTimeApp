@@ -7,7 +7,7 @@ import {AlertService} from "../../../../services/alert.service";
     templateUrl: 'bonusTypeUpdate.component.html'
 })
 
-export class BonusTypeUpdate implements OnInit{
+export class BonusTypeUpdate implements OnInit {
     model: any = {};
     private sub :any;
     id: number;

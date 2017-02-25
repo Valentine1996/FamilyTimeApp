@@ -1,25 +1,34 @@
-<div class="col-md-offset-1 col-md-7">
+<div class="col-md-offset-1 col-md-10">
     <h3>All registered users:</h3>
-    <table class="table table-hover css-serial">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Username</th>
-            <th>Birthday</th>
-            <th>Is parent?</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let internalUser of internalUserList">
-            <td></td>
-            <td>{{internalUser.lastName}}</td>
-            <td>{{internalUser.firstName}}</td>
-            <td>{{internalUser.username}}</td>
-            <td>{{internalUser.birthday | date:'dd/MM/yyyy'}}</td>
-            <td>{{internalUser.isParent ? 'Yes' : 'No'}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive"> <!-- responsive table-->
+        <table class="table table-hover css-serial">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Username</th>
+                <th>Birthday</th>
+                <th class="text-center">Is parent?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let internalUser of internalUserList">
+                <td></td>
+                <td>{{internalUser.lastName}}</td>
+                <td>{{internalUser.firstName}}</td>
+                <td>{{internalUser.username}}</td>
+                <td>{{internalUser.birthday | date:'dd/MM/yyyy'}}</td>
+                <td class="td-icon">
+                    <div *ngIf="internalUser.isParent">
+                        <span class="glyphicon glyphicon-check"> </span>
+                    </div>
+                    <div *ngIf="!internalUser.isParent">
+                        <span class="glyphicon glyphicon-unchecked"> </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

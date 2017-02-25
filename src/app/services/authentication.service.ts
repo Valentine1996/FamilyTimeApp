@@ -13,6 +13,7 @@ export class AuthenticationService {
                 private alertService : AlertService,
                 private router: Router) {
 
+        //Check user status in the storage if page refresh
         if(localStorage.getItem("IsLoggedIn") != null) {
             this.loggedIn = true;
 
@@ -114,14 +115,8 @@ export class AuthenticationService {
                     setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), timeLeft)
                 },
 
-                error => {
-                    this.alertService.error(error);
-                    this.loggedIn = false;
-                    //Remove user's data
-                    localStorage.removeItem('tokenData');
-                    localStorage.removeItem('IsLoggedIn');
-                    localStorage.removeItem('expirationDate');
-                    this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
+                error => { // refresh token expired
+                    this.logout()
                 });
     }
 
@@ -132,16 +127,14 @@ export class AuthenticationService {
             var currentDate = new Date();
 
             if(currentDate >= expirationDate){ // token has expired
-                this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
+                this.logout()
             } else { // set timeout to restore access token
                 var timeLeft = expirationDate.getTime() - currentDate.getTime();
 
                 setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), timeLeft)
-
-                console.log('ExpirationTime, refresh' + timeLeft)
             }
         } else { // if no expiration time - navigate to login page
-            this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
+            this.logout();
         }
     }
 
