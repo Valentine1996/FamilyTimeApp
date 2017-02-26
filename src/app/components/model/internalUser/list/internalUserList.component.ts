@@ -4,7 +4,7 @@ import {UserService} from "../../../../services/user.service";
 @Component({
     selector: 'user-list',
     templateUrl: 'internalUserList.component.html',
-    styleUrls: ['internalUserList.component.css']
+    styleUrls: ['internalUserList.component.css', '/../../../../style/common/table/table.css']
 })
 
 export class InternalUserList implements OnInit {

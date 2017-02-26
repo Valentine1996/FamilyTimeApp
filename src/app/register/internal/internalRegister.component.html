@@ -43,16 +43,20 @@
                 <div *ngIf="f.submitted && !birthday.valid" class="help-block">Birthday is required</div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="gender" class="control-label col-md-3">Is parent?</label>
-            <div class="col-md-9">
-                <input type="checkbox" class="form-control" id="gender" name="gender" [(ngModel)]="model.gender" #gender="ngModel"/>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <div class="checkbox col-md-offset-10">
+                    <label>
+                        <input type="checkbox" id="gender" name="gender" [(ngModel)]="model.gender" #gender="ngModel"/>Male?
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="isParent" class="control-label col-md-3">Male?</label>
-            <div class="col-md-9">
-                <input type="checkbox" class="form-control" id="isParent" name="isParent" [(ngModel)]="model.isParent" #isParent="ngModel"/>
+            <div class="form-group col-md-6">
+                <div class="checkbox col-md-offset-6">
+                    <label>
+                        <input type="checkbox" id="isParent" name="isParent" [(ngModel)]="model.isParent" #isParent="ngModel"/> Parent?
+                    </label>
+                </div>
             </div>
         </div>
         <div class="col-md-offset-5 col-md-5">

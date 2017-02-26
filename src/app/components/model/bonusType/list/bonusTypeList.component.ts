@@ -5,7 +5,7 @@ import {BonusTypeService} from "../../../../services/bonusTypeService";
 @Component({
     selector: 'bonusType-list',
     templateUrl: 'bonusTypeList.component.html',
-    styleUrls: ['bonusTypeList.component.css']
+    styleUrls: ['bonusTypeList.component.css','/../../../../style/common/table/table.css']
 })
 
 export class BonusTypeList implements OnInit {
