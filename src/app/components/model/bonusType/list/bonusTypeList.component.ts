@@ -18,8 +18,6 @@ export class BonusTypeList implements OnInit {
 
     ngOnInit() {
         this.loadAllBonusTypes();
-        // this.bonusTypes = [new BonusType("test", "test", "test"),
-        //                    new BonusType("test", "test", "test")]
     }
 
     deleteBonusType(id: number) {

@@ -27,7 +27,7 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                            </span>Modules</a>
+                            </span>Bonus</a>
             </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse">
@@ -35,22 +35,12 @@
                 <table class="table">
                     <tr>
                         <td>
-                            <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
+                            <span class="glyphicon glyphicon-th-list"></span><a [routerLink]="['/bonus/list']"> List</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="http://www.jquery2dotnet.com">Invoices</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="http://www.jquery2dotnet.com">Shipments</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="http://www.jquery2dotnet.com">Tex</a>
+                            <span class="glyphicon glyphicon-pencil text-primary"></span><a [routerLink]="['/bonus/create']"> Create</a>
                         </td>
                     </tr>
                 </table>
