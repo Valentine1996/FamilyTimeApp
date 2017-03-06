@@ -10,12 +10,14 @@ import { AlertComponent } from './_directives/index'
 import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 
-import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import {RegisterComponent, InternalRegisterComponent} from "./register/index";
-import {AlertService, UserService, AuthenticationService, BonusTypeService} from "./services/index";
+import {AlertService, UserService, AuthenticationService, BonusTypeService, BonusService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
-import {BonusTypeList, BonusTypeComponent, BonusTypeUpdate, BonusTypeCreate, InternalUserList} from "./components/model/index";
+import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //BonusType
+  InternalUserList, //registration
+  BonusCreate, BonusUpdate, BonusList // bonus
+} from "./components/model/index";
 import {HttpClient} from "./client/http.client";
 
 @NgModule({
@@ -33,12 +35,18 @@ import {HttpClient} from "./client/http.client";
     LoginComponent,
     AlertComponent,
     NavigationComponent,
+      /* Bonus Type */
     BonusTypeList,
-    BonusTypeComponent,
     BonusTypeUpdate,
     BonusTypeCreate,
+    BonusTypeDropdown,
+    /* Bonus */
+    BonusCreate,
+    BonusUpdate,
+    BonusList,
+      /* Internal registration */
     InternalRegisterComponent,
-    InternalUserList
+    InternalUserList,
   ],
   providers: [
     AlertService,
@@ -46,7 +54,8 @@ import {HttpClient} from "./client/http.client";
     AuthenticationService,
     AuthGuard,
     HttpClient,
-    BonusTypeService
+    BonusTypeService,
+    BonusService
   ],
   bootstrap: [AppComponent]
 })

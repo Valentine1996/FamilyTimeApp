@@ -1,8 +1,6 @@
 html {
 }
 
-body {
-}
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
   margin-bottom: 0;
@@ -15,12 +13,11 @@ body {
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
-  background-color: #f1f1f1;
   height: 100%;
 }
 
 .main {
-  background-color: aliceblue;
+  /*background-color: aliceblue;*/
   overflow:auto;
 }
 /* Set black background color, white text and some padding */
@@ -30,6 +27,12 @@ footer {
   padding: 15px;
 }
 
+/*.background {*/
+  /*background: url("/img/background.jpg");*/
+  /*background-size:auto;*/
+  /*background-repeat: no-repeat;*/
+  /*height: 100vh;*/
+/*}*/
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 1000px) {
   .sidenav {

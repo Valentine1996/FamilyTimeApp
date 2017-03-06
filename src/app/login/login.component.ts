@@ -15,7 +15,8 @@ export class LoginComponent {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService) {
+    }
 
     login() {
         this.loading = true;
@@ -24,5 +25,6 @@ export class LoginComponent {
         if(localStorage.getItem('access_token') == null){
             this.loading = false;
         }
+        this.loading = false;
     }
 }

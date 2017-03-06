@@ -1,0 +1,5 @@
+<select id="bonusTypeSelector" class="form-control" [(ngModel)]="value" #bonusType = "ngModel">
+    <option *ngFor="let bonusType of bonusTypes" [value]="bonusType.id">
+        {{bonusType.shortName}}
+    </option>
+</select>
