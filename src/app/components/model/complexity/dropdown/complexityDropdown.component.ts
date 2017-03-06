@@ -1,25 +1,25 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import {BonusType} from "../../../../model/bonusType";
+import {Complexity} from "../../../../model/complexity";
 
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_BONUSTYPE: any = {
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_COMPLEXITY: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => BonusTypeDropdown),
+    useExisting: forwardRef(() => ComplexityDropdown),
     multi: true
 };
 
 @Component({
-    selector: 'bonusType-dropdown',
-    templateUrl: 'bonusTypeDropdown.component.html',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_BONUSTYPE]
+    selector: 'complexity-dropdown',
+    templateUrl: 'complexityDropdown.component.html',
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_COMPLEXITY]
 })
-export class BonusTypeDropdown implements ControlValueAccessor {
+export class ComplexityDropdown implements ControlValueAccessor {
 
     @Input('bonusTypes')
-    bonusTypes: BonusType[];
+    complexities: Complexity[];
 
     //The internal data model
     private innerValue: String;
@@ -31,13 +31,11 @@ export class BonusTypeDropdown implements ControlValueAccessor {
 
     //get accessor
     get value(): any {
-        console.log("get value work" + this.innerValue)
         return this.innerValue;
     };
 
     //set accessor including call the onchange callback
     set value(v: any) {
-        console.log('Set work', v)
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);
@@ -51,7 +49,6 @@ export class BonusTypeDropdown implements ControlValueAccessor {
 
     //From ControlValueAccessor interface
     writeValue(value: any) {
-        console.log("write value work " + value)
         if (value !== this.innerValue) {
             this.innerValue = value;
         }

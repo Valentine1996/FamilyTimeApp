@@ -15,10 +15,14 @@ import {AlertService, UserService, AuthenticationService, BonusTypeService, Bonu
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
 import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //BonusType
+  TaskTypeList, TaskTypeCreate, TaskTypeUpdate, TaskTypeDropdown, //TaskType
+  ComplexityList, ComplexityCreate, ComplexityUpdate, ComplexityDropdown,
   InternalUserList, //registration
   BonusCreate, BonusUpdate, BonusList // bonus
 } from "./components/model/index";
 import {HttpClient} from "./client/http.client";
+import {TaskTypeService} from "./services/taskTypeService";
+import {ComplexityService} from "./services/complexityService";
 
 @NgModule({
   imports: [
@@ -40,6 +44,16 @@ import {HttpClient} from "./client/http.client";
     BonusTypeUpdate,
     BonusTypeCreate,
     BonusTypeDropdown,
+    /* Task Type */
+    TaskTypeList,
+    TaskTypeUpdate,
+    TaskTypeCreate,
+    TaskTypeDropdown,
+    /* Complexity */
+    ComplexityList,
+    ComplexityUpdate,
+    ComplexityCreate,
+    ComplexityDropdown,
     /* Bonus */
     BonusCreate,
     BonusUpdate,
@@ -55,7 +69,9 @@ import {HttpClient} from "./client/http.client";
     AuthGuard,
     HttpClient,
     BonusTypeService,
-    BonusService
+    TaskTypeService,
+    BonusService,
+    ComplexityService
   ],
   bootstrap: [AppComponent]
 })

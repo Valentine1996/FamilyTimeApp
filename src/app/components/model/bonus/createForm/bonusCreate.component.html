@@ -19,9 +19,9 @@
         <div class="form-group">
             <label for="bonusTypeSelector" class="control-label col-md-3">Bonus type</label>
             <div class="col-md-9">
-                <custom-input [bonusTypes]="bonusTypes" id="bonusTypeSelector" name="bonusTypeSelector"
+                <bonusType-dropdown [bonusTypes]="bonusTypes" id="bonusTypeSelector" name="bonusTypeSelector"
                               [(ngModel)]="model.bonusTypeId" #bonusTypeId="ngModel" required>
-                </custom-input>
+                </bonusType-dropdown>
                 <div *ngIf="f.submitted && !bonusTypeId.valid" class="help-block">Bonus type is required</div>
             </div>
         </div>

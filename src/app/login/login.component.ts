@@ -22,9 +22,9 @@ export class LoginComponent {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password);
 
-        if(localStorage.getItem('access_token') == null){
-            this.loading = false;
-        }
+        // if(localStorage.getItem('access_token') == null){
+        //     this.loading = false;
+        // }
         this.loading = false;
     }
 }
