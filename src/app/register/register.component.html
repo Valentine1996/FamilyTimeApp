@@ -4,42 +4,42 @@
         <div class="form-group">
             <label for="firstName" class="control-label col-md-3">First name</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" minlength="2" maxlength="32" required />
                 <div *ngIf="f.submitted && !firstName.valid" class="help-block">First name is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="lastName" class="control-label col-md-3">Last name</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" minlength="2" maxlength="32" required />
                 <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last name is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="middleName" class="control-label col-md-3">Middle name</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="middleName" name="middleName" [(ngModel)]="model.middleName" #middleName="ngModel" required />
+                <input type="text" class="form-control" id="middleName" name="middleName" [(ngModel)]="model.middleName" #middleName="ngModel" minlength="2" maxlength="32" required />
                 <div *ngIf="f.submitted && !middleName.valid" class="help-block">Middle name is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="username" class="control-label col-md-3">Username</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+                <input type="email" class="form-control" id="username" name="username" [(ngModel)]="model.username" #username="ngModel" minlength="8" maxlength="32" required />
                 <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
             </div>
         </div>
         <div class="form-group" >
             <label for="password" class="control-label col-md-3">Password</label>
             <div class="col-md-9">
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" #password="ngModel" minlength="8" maxlength="80" required />
                 <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="birthday" class="control-label col-md-3">Birthday</label>
             <div class="col-md-9">
-                <input type="date" class="form-control" id="birthday" name="birthday" [(ngModel)]="model.birthday" #birthday="ngModel"/>
+                <input type="date" class="form-control" id="birthday" name="birthday" [(ngModel)]="model.birthday" #birthday="ngModel" required/>
                 <div *ngIf="f.submitted && !birthday.valid" class="help-block">Birthday is required</div>
             </div>
         </div>

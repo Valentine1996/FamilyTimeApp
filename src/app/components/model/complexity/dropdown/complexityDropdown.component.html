@@ -1,0 +1,5 @@
+<select id="complexitySelector" class="form-control" [(ngModel)]="value" #complexity = "ngModel">
+    <option *ngFor="let complexity of complexities" [value]="complexity.id">
+        {{complexity.type}}
+    </option>
+</select>

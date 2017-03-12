@@ -14,6 +14,12 @@ import {InternalRegisterComponent} from "./register/internal/internalRegister.co
 import {BonusCreate} from "./components/model/bonus/createForm/bonusCreate.component";
 import {BonusList} from "./components/model/bonus/list/bonusList.component";
 import {BonusUpdate} from "./components/model/bonus/updateForm/bonusUpdate.component";
+import {TaskTypeList} from "./components/model/taskType/list/taskTypeList.component";
+import {TaskTypeUpdate} from "./components/model/taskType/updateForm/taskTypeUpdate.component";
+import {TaskTypeCreate} from "./components/model/taskType/createForm/taskTypeCreate.component";
+import {ComplexityList} from "./components/model/complexity/list/complexityList.component";
+import {ComplexityUpdate} from "./components/model/complexity/updateForm/complexityUpdate.component";
+import {ComplexityCreate} from "./components/model/complexity/createForm/complexityCreate.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,6 +35,17 @@ const routes: Routes = [
   { path: 'bonusType/list', component: BonusTypeList, canActivate: [AuthGuard]},
   { path: 'bonusType/update/:id', component: BonusTypeUpdate, canActivate: [AuthGuard]  },
   { path: 'bonusType/create', component: BonusTypeCreate, canActivate: [AuthGuard] },
+
+  /* Task type routing */
+  { path: 'taskType/list', component: TaskTypeList, canActivate: [AuthGuard]},
+  { path: 'taskType/update/:id', component: TaskTypeUpdate, canActivate: [AuthGuard]  },
+  { path: 'taskType/create', component: TaskTypeCreate, canActivate: [AuthGuard] },
+
+  /* Complexity routing */
+  { path: 'complexity/list', component: ComplexityList, canActivate: [AuthGuard]},
+  { path: 'complexity/update/:id', component: ComplexityUpdate, canActivate: [AuthGuard]  },
+  { path: 'complexity/create', component: ComplexityCreate, canActivate: [AuthGuard] },
+
   /* Bonus routing */
   { path: 'bonus/create', component: BonusCreate, canActivate: [AuthGuard] },
   { path: 'bonus/list', component: BonusList, canActivate: [AuthGuard]},

@@ -1,0 +1,25 @@
+<div class="col-md-offset-1 col-md-7">
+    <h3>All task types:</h3>
+    <div class="table-responsive">
+        <table class="table table-hover css-serial">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-center">Update</th>
+                <th class="text-center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let taskType of taskTypes">
+                <td></td>
+                <td>{{taskType.shortName}}</td>
+                <td>{{taskType.description}}</td>
+                <td class="td-icon"><a [routerLink]="['/taskType/update', taskType.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td class="td-icon"><a (click)="deleteTaskType(taskType.id)"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

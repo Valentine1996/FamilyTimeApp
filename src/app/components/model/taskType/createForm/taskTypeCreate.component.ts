@@ -1,22 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {BonusTypeService} from "../../../../services/bonusTypeService";
 import {AlertService} from "../../../../services/alert.service";
-import {BonusTypeDropdown} from "../dropdown/bonusTypeDropdown.component";
+import {TaskTypeService} from "../../../../services/taskTypeService";
 
 @Component({
-    selector : 'bonusType-create',
-    templateUrl: 'bonusTypeCreate.component.html',
+    selector : 'taskType-create',
+    templateUrl: 'taskTypeCreate.component.html',
 
 })
 
-export class BonusTypeCreate implements OnInit{
+export class TaskTypeCreate implements OnInit{
     model: any = {};
-
     loading = false;
+
     constructor(
         private router: Router,
-        private bonusTypeService: BonusTypeService,
+        private taskTypeService: TaskTypeService,
         private alertService: AlertService,
         private route: ActivatedRoute) {}
 
@@ -26,12 +25,11 @@ export class BonusTypeCreate implements OnInit{
 
     create() {
         this.loading = true;
-        this.model.iconName = "Mock"
-        this.bonusTypeService.create(this.model)
+        this.taskTypeService.create(this.model)
             .subscribe(
                 data => {
                     this.alertService.success('Created successful', true);
-                    this.router.navigate(['/bonusType/list']);
+                    this.router.navigate(['/taskType/list']);
                 },
                 error => {
                     this.loading=false;
