@@ -18,7 +18,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_COMPLEXITY: any = {
 })
 export class ComplexityDropdown implements ControlValueAccessor {
 
-    @Input('complexities')
+    @Input('bonusTypes')
     complexities: Complexity[];
 
     //The internal data model
