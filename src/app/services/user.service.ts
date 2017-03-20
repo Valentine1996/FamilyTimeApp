@@ -23,5 +23,10 @@ export class UserService {
     getAll(){
         return this.httpClient.get('/api/users').map((response: Response) => response.json());
     }
+
+    //Get logged user
+    getLoggedUser(){
+        return this.httpClient.get('/api/security/loggedUser').map((response: Response) => response.json());
+    }
     // private helper methods
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers, URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class HttpClient {
@@ -12,11 +12,12 @@ export class HttpClient {
         console.log(JSON.parse(localStorage.getItem('tokenData')).access_token);
     }
 
-    get(url) {
+    get(url, params ?: URLSearchParams) {
         let headers = new Headers();
         this.createAuthorizationHeader(headers);
         return this.http.get(url, {
-            headers: headers
+            headers: headers,
+            search: params
         });
     }
 

@@ -1,5 +1,5 @@
 <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
+    <div class="panel panel-default" *ngIf='authService.isParent()'>
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" *ngIf='authService.isParent()'>
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-folder-close">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" *ngIf='authService.isParent()'>
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-folder-close">
@@ -89,6 +89,30 @@
                     <tr>
                         <td>
                             <span class="glyphicon glyphicon-pencil text-primary"></span><a [routerLink]="['/complexity/create']"> Create</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-folder-close">
+                            </span> Task</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <span class="glyphicon glyphicon-th-list"></span><a [routerLink]="['/task/list']"> List</a>
+                        </td>
+                    </tr>
+                    <tr *ngIf='authService.isParent()'>
+                        <td>
+                            <span class="glyphicon glyphicon-pencil text-primary"></span><a [routerLink]="['/task/create']"> Create</a>
                         </td>
                     </tr>
                 </table>

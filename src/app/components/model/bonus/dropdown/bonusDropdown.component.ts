@@ -1,25 +1,25 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import {Complexity} from "../../../../model/complexity";
+import {Bonus} from "../../../../model/bonus";
 
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_COMPLEXITY: any = {
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_BONUS: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => ComplexityDropdown),
+    useExisting: forwardRef(() => BonusDropdown),
     multi: true
 };
 
 @Component({
-    selector: 'complexity-dropdown',
-    templateUrl: 'complexityDropdown.component.html',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_COMPLEXITY]
+    selector: 'bonus-dropdown',
+    templateUrl: 'bonusDropdown.component.html',
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_BONUS]
 })
-export class ComplexityDropdown implements ControlValueAccessor {
+export class BonusDropdown implements ControlValueAccessor {
 
-    @Input('complexities')
-    complexities: Complexity[];
+    @Input('bonuses')
+    bonuses: Bonus[];
 
     //The internal data model
     private innerValue: String;

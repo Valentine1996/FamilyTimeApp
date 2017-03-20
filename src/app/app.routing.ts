@@ -20,6 +20,9 @@ import {TaskTypeCreate} from "./components/model/taskType/createForm/taskTypeCre
 import {ComplexityList} from "./components/model/complexity/list/complexityList.component";
 import {ComplexityUpdate} from "./components/model/complexity/updateForm/complexityUpdate.component";
 import {ComplexityCreate} from "./components/model/complexity/createForm/complexityCreate.component";
+import {TaskList} from "./components/model/task/list/taskList.component";
+import {TaskCreate} from "./components/model/task/createForm/taskCreate.component";
+import {TaskUpdate} from "./components/model/task/updateForm/taskUpdate.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -50,6 +53,11 @@ const routes: Routes = [
   { path: 'bonus/create', component: BonusCreate, canActivate: [AuthGuard] },
   { path: 'bonus/list', component: BonusList, canActivate: [AuthGuard]},
   { path: 'bonus/update/:id', component: BonusUpdate, canActivate: [AuthGuard]  },
+
+  /* Task routing */
+  { path: 'task/list', component: TaskList, canActivate: [AuthGuard]},
+  { path: 'task/update/:id', component: TaskUpdate, canActivate: [AuthGuard]  },
+  { path: 'task/create', component: TaskCreate, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: 'login' }
 ];
