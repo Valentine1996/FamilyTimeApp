@@ -3,8 +3,6 @@ import {Http, Headers, Response} from '@angular/http';
 
 import {AlertService} from "./alert.service";
 import {Router} from "@angular/router";
-import {UserService} from "./user.service";
-import {HttpClient} from "../client/http.client";
 
 @Injectable()
 export class AuthenticationService {
@@ -13,7 +11,6 @@ export class AuthenticationService {
 
     constructor(private http: Http,
                 private alertService : AlertService,
-                private userService : UserService,
                 private router: Router) {
 
         //Check user status in the storage if page refresh
@@ -62,20 +59,8 @@ export class AuthenticationService {
 
                 setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5)  * 1000);
 
-                    //Set user role
-                    this.userService.getLoggedUser().subscribe(
-                        data => {
-                            console.log('From controller' + data.isParent)
-                            localStorage.setItem('parent', data.isParent);
-                            console.log('in Method ' + this.isParent())
+                this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
 
-                            this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
-                        },
-
-                        error => { // No logged user
-                            this.alertService.error(error);
-                        }
-                    );
                 },
 
                 error => {
@@ -125,7 +110,7 @@ export class AuthenticationService {
 
                     timeLeft =  Number(localStorage.getItem('expirationDate')) - new Date().getTime();
 
-                    // console.log('ExpirationTime, time out' + timeLeft)
+                    console.log('ExpirationTime, time out' + timeLeft)
 
                     setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), timeLeft)
                 },
@@ -158,25 +143,11 @@ export class AuthenticationService {
         localStorage.removeItem('tokenData');
         localStorage.removeItem('IsLoggedIn');
         localStorage.removeItem('expirationDate');
-        localStorage.removeItem('parent');
         this.loggedIn = false;
         this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
     }
 
-
     isLoggedIn() : boolean {
         return this.loggedIn;
-    }
-
-    isParent() : boolean {
-
-        if(localStorage.getItem("parent") != null) {
-
-            let isParent : boolean = (localStorage.getItem("parent") === "true")
-
-            return isParent;
-        }
-
-        this.logout();
     }
 }

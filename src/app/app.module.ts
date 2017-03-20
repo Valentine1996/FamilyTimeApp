@@ -11,16 +11,14 @@ import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 
 import {RegisterComponent, InternalRegisterComponent} from "./register/index";
-import {AlertService, UserService, AuthenticationService, BonusTypeService, BonusService, TaskService} from "./services/index";
+import {AlertService, UserService, AuthenticationService, BonusTypeService, BonusService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
 import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //BonusType
   TaskTypeList, TaskTypeCreate, TaskTypeUpdate, TaskTypeDropdown, //TaskType
   ComplexityList, ComplexityCreate, ComplexityUpdate, ComplexityDropdown,
   InternalUserList, //registration
-  BonusCreate, BonusUpdate, BonusList, BonusDropdown, // bonus
-  TaskList, SingleTask, TaskCreate, TaskUpdate,
-  PerformerDropdown // Performer
+  BonusCreate, BonusUpdate, BonusList // bonus
 } from "./components/model/index";
 import {HttpClient} from "./client/http.client";
 import {TaskTypeService} from "./services/taskTypeService";
@@ -41,40 +39,25 @@ import {ComplexityService} from "./services/complexityService";
     LoginComponent,
     AlertComponent,
     NavigationComponent,
-
       /* Bonus Type */
     BonusTypeList,
     BonusTypeUpdate,
     BonusTypeCreate,
     BonusTypeDropdown,
-
     /* Task Type */
     TaskTypeList,
     TaskTypeUpdate,
     TaskTypeCreate,
     TaskTypeDropdown,
-
-    /* Task */
-    TaskList,
-    SingleTask,
-    TaskCreate,
-    TaskUpdate,
-
     /* Complexity */
     ComplexityList,
     ComplexityUpdate,
     ComplexityCreate,
     ComplexityDropdown,
-
     /* Bonus */
     BonusCreate,
     BonusUpdate,
     BonusList,
-    BonusDropdown,
-
-    /* Performer dropdown*/
-    PerformerDropdown,
-
       /* Internal registration */
     InternalRegisterComponent,
     InternalUserList,
@@ -88,8 +71,7 @@ import {ComplexityService} from "./services/complexityService";
     BonusTypeService,
     TaskTypeService,
     BonusService,
-    ComplexityService,
-    TaskService
+    ComplexityService
   ],
   bootstrap: [AppComponent]
 })
