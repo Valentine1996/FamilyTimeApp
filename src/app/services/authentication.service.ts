@@ -177,6 +177,6 @@ export class AuthenticationService {
             return isParent;
         }
 
-        this.logout();
+        return false;
     }
 }
