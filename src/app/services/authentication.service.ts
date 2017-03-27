@@ -3,14 +3,19 @@ import {Http, Headers, Response} from '@angular/http';
 
 import {AlertService} from "./alert.service";
 import {Router} from "@angular/router";
+import {UserService} from "./user.service";
+import {HttpClient} from "../client/http.client";
 
 @Injectable()
 export class AuthenticationService {
 
     private loggedIn = false;
 
+    private readonly reserveTime = 5;
+
     constructor(private http: Http,
                 private alertService : AlertService,
+                private userService : UserService,
                 private router: Router) {
 
         //Check user status in the storage if page refresh
@@ -45,7 +50,7 @@ export class AuthenticationService {
                 // console.log("Current date" + expirationDate);
 
                 //Subtract 5 seconds as reserve
-                expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - 5)
+                expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime);
 
                 //Save expiration date to local storage
                 localStorage.setItem('expirationDate', expirationDate.getTime().toString())
@@ -57,10 +62,22 @@ export class AuthenticationService {
                 // set timeout to get valid access token
                 var expirationTime = data.expires_in;
 
-                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5)  * 1000);
+                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - this.reserveTime)  * 1000);
 
-                this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
+                    //Set user role
+                    this.userService.getLoggedUser().subscribe(
+                        data => {
+                            // console.log('From controller' + data.isParent)
+                            localStorage.setItem('parent', data.isParent);
+                            // console.log('in Method ' + this.isParent())
 
+                            this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
+                        },
+
+                        error => { // No logged user
+                            this.alertService.error(error);
+                        }
+                    );
                 },
 
                 error => {
@@ -100,7 +117,7 @@ export class AuthenticationService {
 
                     //Subtract 5 seconds as reserve
 
-                    expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - 5)
+                    expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime)
 
                     //Save expiration date to local storage
                     localStorage.setItem('expirationDate', expirationDate.getTime().toString())
@@ -110,7 +127,7 @@ export class AuthenticationService {
 
                     timeLeft =  Number(localStorage.getItem('expirationDate')) - new Date().getTime();
 
-                    console.log('ExpirationTime, time out' + timeLeft)
+                    // console.log('ExpirationTime, time out' + timeLeft)
 
                     setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), timeLeft)
                 },
@@ -143,9 +160,11 @@ export class AuthenticationService {
         localStorage.removeItem('tokenData');
         localStorage.removeItem('IsLoggedIn');
         localStorage.removeItem('expirationDate');
+        localStorage.removeItem('parent');
         this.loggedIn = false;
         this.router.navigate([{outlets: {primary: 'login', navigation: null}}])
     }
+
 
     isLoggedIn() : boolean {
         return this.loggedIn;
