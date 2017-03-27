@@ -18,8 +18,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR_TASKTYPE: any = {
 })
 export class TaskTypeDropdown implements ControlValueAccessor {
 
-    @Input('taskTypes')
-    taskTypes: TaskType[] = [];
+    @Input('bonusTypes')
+    bonusTypes: TaskType[];
 
     //The internal data model
     private innerValue: String;

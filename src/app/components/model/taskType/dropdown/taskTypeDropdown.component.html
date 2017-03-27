@@ -1,4 +1,4 @@
-<select id="taskTypeSelector" class="form-control" [(ngModel)]="value" #taskType="ngModel">
+<select id="taskTypeSelector" class="form-control" [(ngModel)]="value" #taskType = "ngModel">
     <option *ngFor="let taskType of taskTypes" [value]="taskType.id">
         {{taskType.shortName}}
     </option>
