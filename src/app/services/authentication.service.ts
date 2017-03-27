@@ -11,6 +11,8 @@ export class AuthenticationService {
 
     private loggedIn = false;
 
+    private readonly reserveTime = 5;
+
     constructor(private http: Http,
                 private alertService : AlertService,
                 private userService : UserService,
@@ -48,7 +50,7 @@ export class AuthenticationService {
                 // console.log("Current date" + expirationDate);
 
                 //Subtract 5 seconds as reserve
-                expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - 5)
+                expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime);
 
                 //Save expiration date to local storage
                 localStorage.setItem('expirationDate', expirationDate.getTime().toString())
@@ -60,14 +62,14 @@ export class AuthenticationService {
                 // set timeout to get valid access token
                 var expirationTime = data.expires_in;
 
-                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5)  * 1000);
+                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - this.reserveTime)  * 1000);
 
                     //Set user role
                     this.userService.getLoggedUser().subscribe(
                         data => {
-                            console.log('From controller' + data.isParent)
+                            // console.log('From controller' + data.isParent)
                             localStorage.setItem('parent', data.isParent);
-                            console.log('in Method ' + this.isParent())
+                            // console.log('in Method ' + this.isParent())
 
                             this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
                         },
@@ -115,7 +117,7 @@ export class AuthenticationService {
 
                     //Subtract 5 seconds as reserve
 
-                    expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - 5)
+                    expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime)
 
                     //Save expiration date to local storage
                     localStorage.setItem('expirationDate', expirationDate.getTime().toString())
