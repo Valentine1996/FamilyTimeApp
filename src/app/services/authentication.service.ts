@@ -150,4 +150,16 @@ export class AuthenticationService {
     isLoggedIn() : boolean {
         return this.loggedIn;
     }
+
+    isParent() : boolean {
+
+        if(localStorage.getItem("parent") != null) {
+
+            let isParent : boolean = (localStorage.getItem("parent") === "true")
+
+            return isParent;
+        }
+
+        return false;
+    }
 }
