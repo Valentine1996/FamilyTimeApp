@@ -62,14 +62,14 @@ export class AuthenticationService {
                 // set timeout to get valid access token
                 var expirationTime = data.expires_in;
 
-                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - this.reserveTime)  * 1000);
+                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5)  * 1000);
 
                     //Set user role
                     this.userService.getLoggedUser().subscribe(
                         data => {
-                            // console.log('From controller' + data.isParent)
+                            console.log('From controller' + data.isParent)
                             localStorage.setItem('parent', data.isParent);
-                            // console.log('in Method ' + this.isParent())
+                            console.log('in Method ' + this.isParent())
 
                             this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
                         },
