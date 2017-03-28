@@ -1,0 +1,5 @@
+<select id="statusSelector" class="form-control" [(ngModel)]="value" #status = "ngModel">
+    <option *ngFor="let status of statuses" [value]="status.id">
+        {{status.code}}
+    </option>
+</select>

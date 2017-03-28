@@ -9,7 +9,13 @@ export * from './bonus/createForm/bonusCreate.component';
 export * from './taskType/list/taskTypeList.component';
 export * from './taskType/updateForm/taskTypeUpdate.component';
 export * from './taskType/createForm/taskTypeCreate.component';
-export * from './taskType/dropdown/taskTypeDropdown.component';;
+export * from './taskType/dropdown/taskTypeDropdown.component';
+
+    //Task
+export * from './task/list/taskList.component';
+export * from './task/singleTask.component';
+export * from './task/createForm/taskCreate.component';
+export * from './task/updateForm/taskUpdate.component';
 
     //Complexity
 export * from './complexity/list/complexityList.component';
@@ -20,6 +26,10 @@ export * from './complexity/dropdown/complexityDropdown.component';
     //Bonus
 export * from './bonus/updateForm/bonusUpdate.component'
 export * from './bonus/list/bonusList.component';
+export * from './bonus/dropdown/bonusDropdown.component';
+
+    //Performer dropdown
+export * from './performer/dropdown/performerDropdown.component';
 
     //Registration
 export * from './internalUser/list/internalUserList.component';
