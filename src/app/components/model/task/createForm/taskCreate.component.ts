@@ -10,6 +10,7 @@ import {User} from "../../../../model/user";
 import {Complexity} from "../../../../model/complexity";
 import {ComplexityService} from "../../../../services/complexityService";
 import {UserService} from "../../../../services/user.service";
+import moment = require("moment");
 
 @Component({
     templateUrl: 'taskCreate.component.html'
@@ -49,6 +50,10 @@ export class TaskCreate implements OnInit {
 
     create() {
         this.loading = true;
+
+        var day = moment(this.model.closeTo).format("YYYY-MM-DD[T]HH:mm");
+
+        this.model.closeTo = day;
 
         this.taskService.create(this.model)
             .subscribe(

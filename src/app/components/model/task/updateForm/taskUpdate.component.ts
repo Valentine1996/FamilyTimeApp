@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {BonusTypeService} from "../../../../services/bonusTypeService";
 import {AlertService} from "../../../../services/alert.service";
 import {Bonus} from "../../../../model/bonus";
 import {BonusService} from "../../../../services/bonusService";
@@ -11,6 +10,7 @@ import {TaskTypeService} from "../../../../services/taskTypeService";
 import {ComplexityService} from "../../../../services/complexityService";
 import {UserService} from "../../../../services/user.service";
 import {TaskService} from "../../../../services/taskService";
+import * as moment from "moment";
 
 @Component({
     templateUrl: 'taskUpdate.component.html'
@@ -56,6 +56,7 @@ export class TaskUpdate implements OnInit {
 
         this.taskService.getById(this.id).subscribe(
             data => {
+                this.model.id = data.id;
                 this.model.taskTypeId = data.taskType.id;
                 this.model.complexityId = data.complexity.id;
                 this.model.performerId = data.performer.id;
@@ -74,6 +75,8 @@ export class TaskUpdate implements OnInit {
 
     update() {
         this.loading = true;
+
+        this.model.closeTo = moment(this.model.closeTo).format("YYYY-MM-DD[T]HH:mm");
 
         this.taskService.update(this.model)
             .subscribe(

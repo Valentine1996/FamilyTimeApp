@@ -9,6 +9,15 @@ import { AboutComponent } from './about/about.component';
 import { AlertComponent } from './_directives/index'
 import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
+import { DateTimePickerModule } from 'ng2-date-time-picker';
+
+// Override Date object parser
+// NguiDatetime.parseDate = (str: any): Date => {
+//   var day = moment(str, "YYYY-MM-DD[T]hh:mm");
+//
+//   return day.toDate();
+//
+// } ;
 
 import {RegisterComponent, InternalRegisterComponent} from "./register/index";
 import {AlertService, UserService, AuthenticationService, BonusTypeService, BonusService, TaskService} from "./services/index";
@@ -25,13 +34,15 @@ import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //Bo
 import {HttpClient} from "./client/http.client";
 import {TaskTypeService} from "./services/taskTypeService";
 import {ComplexityService} from "./services/complexityService";
+import moment = require("moment");
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    DateTimePickerModule
   ],
   declarations: [
     AppComponent,
