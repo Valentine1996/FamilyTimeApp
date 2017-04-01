@@ -23,6 +23,7 @@ import {ComplexityCreate} from "./components/model/complexity/createForm/complex
 import {TaskList} from "./components/model/task/list/taskList.component";
 import {TaskCreate} from "./components/model/task/createForm/taskCreate.component";
 import {TaskUpdate} from "./components/model/task/updateForm/taskUpdate.component";
+import {ApprovalList} from "./components/model/task/approval/list/approvalList.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -58,6 +59,10 @@ const routes: Routes = [
   { path: 'task/list', component: TaskList, canActivate: [AuthGuard]},
   { path: 'task/update/:id', component: TaskUpdate, canActivate: [AuthGuard]  },
   { path: 'task/create', component: TaskCreate, canActivate: [AuthGuard] },
+
+  /* Approval routing */
+  { path: 'approval/list', component: ApprovalList, canActivate: [AuthGuard]},
+
   // otherwise redirect to home
   { path: '**', redirectTo: 'login' }
 ];

@@ -10,9 +10,6 @@
                 </div>
                 <div class="col-md-6">
                     <div>
-                       Status: {{task.status}}
-                    </div>
-                    <div>
                         Bonus: {{task.bonus.title}}
                     </div>
                     <div>
@@ -21,13 +18,20 @@
                 </div>
             </div>
             <div class="row" *ngIf='authService.isParent()'>
-                <div class="col-md-6"><a [routerLink]="['/task/update', task.id]">Update <span class="glyphicon glyphicon-pencil"></span></a>
+                <div class="col-md-6">
+                    <a [routerLink]="['/task/update', task.id]">Update <span class="glyphicon glyphicon-pencil"></span></a>
                     <a (click)="deleteTask(task.id)">Delete <span class="glyphicon glyphicon-remove"></span></a>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
+            <div class="row" *ngIf='!authService.isParent()'>
+                <div class="col-md-6">
+                    <a *ngIf='isOpen(task.status)' (click)="requestForApproval(task.id)">Send for approval <span class="glyphicon glyphicon-send"></span></a>
                 </div>
                 <div class="col-md-6"></div>
             </div>
         </div>
 
     </div>
-
 </div>

@@ -115,6 +115,11 @@
                             <span class="glyphicon glyphicon-pencil text-primary"></span><a [routerLink]="['/task/create']"> Create</a>
                         </td>
                     </tr>
+                    <tr *ngIf='authService.isParent()'>
+                        <td>
+                            <span class="glyphicon glyphicon-th-list text-primary"></span><a [routerLink]="['/approval/list']"> Approvals</a>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>

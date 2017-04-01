@@ -9,7 +9,6 @@ export class HttpClient {
     createAuthorizationHeader(headers: Headers) {
         headers.append('Authorization', 'Bearer ' +
             JSON.parse(localStorage.getItem('tokenData')).access_token);
-        console.log(JSON.parse(localStorage.getItem('tokenData')).access_token);
     }
 
     get(url, params ?: URLSearchParams) {
@@ -33,6 +32,14 @@ export class HttpClient {
         let headers = new Headers();
         this.createAuthorizationHeader(headers);
         return this.http.put(url, data, {
+            headers: headers
+        });
+    }
+
+    patch(url, data) {
+        let headers = new Headers();
+        this.createAuthorizationHeader(headers);
+        return this.http.patch(url, data, {
             headers: headers
         });
     }

@@ -13,29 +13,42 @@ export class TaskList implements OnInit {
 
     tasks: Task[] = [];
 
+    currentTaskStatus : TaskStatus;
+
     constructor(private taskService: TaskService) {
+       this.currentTaskStatus = TaskStatus.OPEN;
     }
 
     ngOnInit() {
-        this.loadAllTasksByStatus(TaskStatus.OPEN);
+        this.loadAllTasksByStatus(this.currentTaskStatus);
     }
 
     private loadAllTasksOnClick(status : any) {
-        console.log("RadioValue " + status.target.value);
-
         if(status.target.value == "OPEN"){
-            this.loadAllTasksByStatus(TaskStatus.OPEN);
+            this.currentTaskStatus = TaskStatus.OPEN;
+
+            this.loadAllTasksByStatus(this.currentTaskStatus);
+        } else if (status.target.value == "PENDING") {
+            this.currentTaskStatus = TaskStatus.PENDING;
+
+            this.loadAllTasksByStatus(this.currentTaskStatus);
         } else if (status.target.value == "SOLVED") {
-            this.loadAllTasksByStatus(TaskStatus.SOLVED);
+            this.currentTaskStatus = TaskStatus.SOLVED;
+
+            this.loadAllTasksByStatus(this.currentTaskStatus);
         }
     }
 
     private loadAllTasksByStatus(status: TaskStatus) {
-        console.log("Load work")
-        this.taskService.getAllTasksByStatus(status).subscribe(tasks => { this.tasks = tasks; });
+        this.taskService.getAllPerformerTasksByStatus(status).subscribe(tasks => { this.tasks = tasks; });
     }
 
-    onDelete(id : number) {
-        this.taskService.delete(id).subscribe(() => { this.loadAllTasksByStatus(TaskStatus.OPEN); });
+    delete(id : number) {
+        this.taskService.delete(id).subscribe(() => { this.loadAllTasksByStatus(this.currentTaskStatus); });
+    }
+
+    requestForApproval(id : number) {
+
+        this.taskService.changeStatus(id, TaskStatus[TaskStatus.PENDING]).subscribe(() => {this.loadAllTasksByStatus(this.currentTaskStatus);});
     }
 }

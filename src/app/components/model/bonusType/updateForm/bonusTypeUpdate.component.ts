@@ -25,8 +25,6 @@ export class BonusTypeUpdate implements OnInit {
             this.id = +params['id']; // (+) converts string 'id' to a number
         });
 
-        console.log(this.id)
-
         this.bonusTypeService.getById(this.id).subscribe(
             data => {
                 this.model = data;
