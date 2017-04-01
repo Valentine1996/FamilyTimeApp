@@ -64,6 +64,7 @@
             <div class="col-md-9">
                 <select class="form-control" id="statusSelector" name="statusSelector" [(ngModel)]="model.status" #status="ngModel" required>
                     <option value="OPEN">OPEN</option>
+                    <option value="PENDING">PENDING</option>
                     <option value="SOLVED">SOLVED</option>
                 </select>
                 <div *ngIf="f.submitted && !status.valid" class="help-block">Status is required</div>

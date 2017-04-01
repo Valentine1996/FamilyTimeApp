@@ -51,9 +51,7 @@ export class TaskCreate implements OnInit {
     create() {
         this.loading = true;
 
-        var day = moment(this.model.closeTo).format("YYYY-MM-DD[T]HH:mm");
-
-        this.model.closeTo = day;
+        this.model.closeTo = moment(this.model.closeTo).format("YYYY-MM-DD[T]HH:mm");
 
         this.taskService.create(this.model)
             .subscribe(
@@ -73,7 +71,6 @@ export class TaskCreate implements OnInit {
 
     private loadAllTaskTypes() {
         this.taskTypeService.getAll().subscribe(taskTypes => {
-            console.log("In method: task types " + taskTypes);
             this.taskTypes = taskTypes; });
     }
 

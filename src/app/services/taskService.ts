@@ -10,12 +10,20 @@ export class TaskService{
     constructor(private http: HttpClient) {
     }
 
-    getAllTasksByStatus(status : TaskStatus) {
+    getAllPerformerTasksByStatus(status : TaskStatus) {
         let params: URLSearchParams = new URLSearchParams();
 
         params.set('status', TaskStatus[status]);
 
-        return this.http.get('/api/task/headTasks', params).map((response: Response) => response.json());
+        return this.http.get('/api/task/headPerformerTasks', params).map((response: Response) => response.json());
+    }
+
+    getAllCreatorTasksByStatus(status : TaskStatus) {
+        let params: URLSearchParams = new URLSearchParams();
+
+        params.set('status', TaskStatus[status]);
+
+        return this.http.get('/api/task/headCreatorTasks', params).map((response: Response) => response.json());
     }
 
     getById(id: number) {
@@ -32,6 +40,10 @@ export class TaskService{
 
     update(task: Task) {
         return this.http.put('/api/task/' + task.id, task).map((response: Response) => response.json());
+    }
+
+    changeStatus(taskId : number, taskStatus : String) {
+        return this.http.patch('/api/task/' + taskId, taskStatus).map((response: Response) => response.json());
     }
 
     delete(id: number) {

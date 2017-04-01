@@ -10,6 +10,5 @@ import {AuthenticationService} from "./services/authentication.service";
 export class AppComponent {
 
   constructor(public authService: AuthenticationService) {
-    console.log(authService)
   }
 }

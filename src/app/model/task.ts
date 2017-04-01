@@ -2,6 +2,7 @@ import {User} from "./user";
 import {Bonus} from "./bonus";
 import {TaskType} from "./taskType";
 import {Complexity} from "./complexity";
+import {TaskStatus} from "./taskStatus";
 export class Task {
     id : number;
     taskType : TaskType;

@@ -67,9 +67,7 @@ export class AuthenticationService {
                     //Set user role
                     this.userService.getLoggedUser().subscribe(
                         data => {
-                            console.log('From controller' + data.isParent)
                             localStorage.setItem('parent', data.isParent);
-                            console.log('in Method ' + this.isParent())
 
                             this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
                         },
@@ -178,7 +176,6 @@ export class AuthenticationService {
 
             return isParent;
         }
-
         return false;
     }
 }

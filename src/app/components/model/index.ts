@@ -13,9 +13,13 @@ export * from './taskType/dropdown/taskTypeDropdown.component';
 
     //Task
 export * from './task/list/taskList.component';
-export * from './task/singleTask.component';
+export * from './task/singleTask/singleTask.component';
 export * from './task/createForm/taskCreate.component';
 export * from './task/updateForm/taskUpdate.component';
+
+    //Approval
+export * from './task/approval/list/approvalList.component';
+export * from './task/approval/singleApproval/singleApproval.component';
 
     //Complexity
 export * from './complexity/list/complexityList.component';

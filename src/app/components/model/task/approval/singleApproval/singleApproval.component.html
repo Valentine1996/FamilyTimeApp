@@ -1,0 +1,30 @@
+<div class="task">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="/img/task.png" height="70" width="70">
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    {{task.description}}
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        Bonus: {{task.bonus.title}}
+                    </div>
+                    <div>
+                        Creator: {{task.creator.firstName}} {{task.creator.lastName}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a [routerLink]="['/task/update', task.id]">Update <span class="glyphicon glyphicon-pencil"></span></a>
+                    <a (click)="approve(task.id)">Approve <span class="glyphicon glyphicon-thumbs-up"></span></a>
+                    <a (click)="reject(task.id)">Reject <span class="glyphicon glyphicon-thumbs-down"></span></a>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+</div>
