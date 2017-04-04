@@ -5,7 +5,7 @@ import {AlertService} from "../services/alert.service";
 
 @Component({
     templateUrl: 'register.component.html',
-    styleUrls: ['register.component.css']
+    styleUrls: ['register.component.css', "../style/common/form/form.css"]
 })
 
 export class RegisterComponent {

@@ -1,3 +1,13 @@
-.componentsList{
-    display: inline;
+.taskList-layout {
+    background-color: white;
+}
+.underscore {
+    margin: 0px 25px 0px;
+}
+.task-navigation {
+    margin: 10px 10px;
+}
+
+.task-container {
+    margin: 10px;
 }

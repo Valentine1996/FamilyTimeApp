@@ -1,8 +1,17 @@
-<div class="componentsList col-md-offset-1 col-md-10">
-    <div class="col-md 8">Approvals</div>
-    <approval *ngFor="let task of tasks"
-          [task] ="task"
-          (onApprove)="approve($event)"
-          (onReject)="reject($event)">
-    </approval>
+<div class="col-md-12 panel panel-default">
+    <div class="row task-navigation">
+        <div class="col-md-4">Approvals</div>
+        <div class="col-md-8">
+        </div>
+    </div>
+    <div class="underscore">
+        <hr>
+    </div>
+    <div class="row task-container">
+        <approval *ngFor="let task of tasks"
+              [task] ="task"
+              (onApprove)="approve($event)"
+              (onReject)="reject($event)">
+        </approval>
+    </div>
 </div>
