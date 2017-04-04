@@ -4,7 +4,8 @@ import {AuthenticationService} from "../services/authentication.service";
 import {AlertService} from "../services/alert.service";
 
 @Component({
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['../style/common/form/form.css']
 })
 
 export class LoginComponent {

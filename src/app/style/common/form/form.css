@@ -1,0 +1,14 @@
+.panel-push-right {
+    float: right;
+    font-size: 80%;
+    position: relative;
+    top:-10px
+}
+
+.panel-body-layout {
+    padding-top:30px
+}
+
+.input-group-layout {
+    margin-bottom: 10px;
+}

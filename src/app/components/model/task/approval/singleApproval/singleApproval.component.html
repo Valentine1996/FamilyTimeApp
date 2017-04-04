@@ -1,29 +1,41 @@
-<div class="task">
-    <div class="row">
-        <div class="col-md-3">
-            <img src="/img/task.png" height="70" width="70">
-        </div>
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-6">
-                    {{task.description}}
-                </div>
-                <div class="col-md-6">
-                    <div>
-                        Bonus: {{task.bonus.title}}
+<div class="col-md-6">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <div class="row">
+                    <div class="col-md-2"><img class="img-responsive" height="50" width="50" src="http://placehold.it/100x70">
                     </div>
-                    <div>
-                        Creator: {{task.creator.firstName}} {{task.creator.lastName}}
+                    <div class="col-md-5 text-left">
+                        <small>{{task.performer.lastName}} {{task.performer.firstName}}</small>
+                    </div>
+                    <div class="col-md-5">
+                        <i class="glyphicon glyphicon-time"></i> {{task.closeTo | date : 'MM/dd/yyyy'}}
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="panel-body">
             <div class="row">
-                <div class="col-md-6">
-                    <a [routerLink]="['/task/update', task.id]">Update <span class="glyphicon glyphicon-pencil"></span></a>
-                    <a (click)="approve(task.id)">Approve <span class="glyphicon glyphicon-thumbs-up"></span></a>
-                    <a (click)="reject(task.id)">Reject <span class="glyphicon glyphicon-thumbs-down"></span></a>
+                <div class="col-md-10">
+                    <h4 class="product-name text-left"><strong>{{task.taskType.shortName}}</strong></h4><h4>
+                    <small class="text-left">{{task.description}}</small></h4>
                 </div>
-                <div class="col-md-6"></div>
+                <div class="col-md-2">
+                    <div class="">
+                        <a [routerLink]="['/task/update', task.id]"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h4 class="text-left">Prize <strong>{{task.prize}}</strong></h4>
+                </div>
+                <div class="col-md-8 pull-right">
+                    <button type="button" class="btn btn-success" style="margin: 1px" (click)="approve(task.id)">Approve </button>
+                    <button type="button" class="btn btn-danger" style="margin: 1px" (click)="reject(task.id)">Reject</button>
+                </div>
             </div>
         </div>
     </div>

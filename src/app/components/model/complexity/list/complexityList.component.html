@@ -1,25 +1,31 @@
-<div class="col-md-offset-1 col-md-7">
-    <h3>All complexities:</h3>
-    <div class="table-responsive">
-        <table class="table table-hover css-serial">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th class="text-center">Update</th>
-                <th class="text-center">Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let complexity of complexities">
-                <td></td>
-                <td>{{complexity.type}}</td>
-                <td>{{complexity.description}}</td>
-                <td class="td-icon"><a [routerLink]="['/complexity/update', complexity.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td class="td-icon"><a (click)="deleteComplexity(complexity.id)"><span class="glyphicon glyphicon-remove"></span></a></td>
-            </tr>
-            </tbody>
-        </table>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title text-left">Complexities:</h3>
+        </div>
+        <div class="panel-body table-responsive table-layout">
+            <div class="col-md-offset-1 col-md-10">
+                <table class="table table-hover css-serial">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th class="text-center">Update</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let complexity of complexities">
+                        <td></td>
+                        <td>{{complexity.type}}</td>
+                        <td>{{complexity.description}}</td>
+                        <td class="td-icon"><a [routerLink]="['/complexity/update', complexity.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td class="td-icon"><a (click)="deleteComplexity(complexity.id)"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

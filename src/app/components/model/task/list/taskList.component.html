@@ -1,16 +1,22 @@
-<div class="row">
-    <div class="col-md 8">Tasks</div>
-    <div class="btn-group col-md-6">
-        <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="OPEN">OPEN</button>
-        <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="SOLVED">CLOSED</button>
-        <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="PENDING">WAITING FOR APPROVAL</button>
+ <div class="col-md-12 panel panel-default">
+        <div class="row task-navigation">
+            <div class="col-md-4">Tasks</div>
+            <div class="col-md-8">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="OPEN">OPEN</button>
+                    <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="SOLVED">CLOSED</button>
+                    <button type="button" class="btn btn-primary" (click)="loadAllTasksOnClick($event)" value="PENDING">WAITING FOR APPROVAL</button>
+                </div>
+            </div>
+        </div>
+        <div class="underscore">
+            <hr>
+        </div>
+        <div class="row task-container">
+            <task *ngFor="let task of tasks"
+                  [task]="task"
+                  (onDeleteTask)="delete($event)"
+                  (onRequestForApproval)="requestForApproval($event)">
+            </task>
+        </div>
     </div>
-</div>
-
-<div class="componentsList col-md-offset-1 col-md-10">
-    <task *ngFor="let task of tasks"
-          [task]="task"
-          (onDeleteTask)="delete($event)"
-          (onRequestForApproval)="requestForApproval($event)">
-    </task>
-</div>

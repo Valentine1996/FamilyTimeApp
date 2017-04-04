@@ -1,43 +1,51 @@
-<div class="col-md-offset-2 col-md-7">
-    <h2 align="center">Create bonus</h2>
-    <form class="form-horizontal"class="form-horizontal" name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="title" class="control-label col-md-3">Title</label>
-            <div class="col-md-9">
-                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="model.title" #title="ngModel" required />
-                <div *ngIf="f.submitted && !title.valid" class="help-block">Title is required</div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title text-left">Create bonus</div>
+        </div>
+        <div class="panel-body panel-body-layout">
+            <div class="col-md-offset-2 col-md-7">
+                <form class="form-horizontal"class="form-horizontal" name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="title" class="control-label col-md-3">Title</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="title" name="title" [(ngModel)]="model.title" #title="ngModel" required />
+                            <div *ngIf="f.submitted && !title.valid" class="help-block">Title is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="control-label col-md-3">Description</label>
+                        <div class="col-md-9">
+                            <textarea rows="4" class="form-control" id="description" name="description" [(ngModel)]="model.description" #description="ngModel" required>
+                                </textarea>
+                            <div *ngIf="f.submitted && !description.valid" class="help-block">Description is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bonusTypeSelector" class="control-label col-md-3">Bonus type</label>
+                        <div class="col-md-9">
+                            <bonusType-dropdown [bonusTypes]="bonusTypes" id="bonusTypeSelector" name="bonusTypeSelector"
+                                          [(ngModel)]="model.bonusTypeId" #bonusTypeId="ngModel" required>
+                            </bonusType-dropdown>
+                            <div *ngIf="f.submitted && !bonusTypeId.valid" class="help-block">Bonus type is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="control-label col-md-3">Price</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="model.price" #price="ngModel" required/>
+                            <div *ngIf="f.submitted && !price.valid" class="help-block">Price is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-5">
+                            <button [disabled] = "loading" class="btn btn-primary">Create</button>
+                            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                            <a [routerLink]="['/bonus/list']" class="btn btn-link">Cancel</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="form-group">
-            <label for="description" class="control-label col-md-3">Description</label>
-            <div class="col-md-9">
-                <textarea rows="4" class="form-control" id="description" name="description" [(ngModel)]="model.description" #description="ngModel" required>
-                    </textarea>
-                <div *ngIf="f.submitted && !description.valid" class="help-block">Description is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="bonusTypeSelector" class="control-label col-md-3">Bonus type</label>
-            <div class="col-md-9">
-                <bonusType-dropdown [bonusTypes]="bonusTypes" id="bonusTypeSelector" name="bonusTypeSelector"
-                              [(ngModel)]="model.bonusTypeId" #bonusTypeId="ngModel" required>
-                </bonusType-dropdown>
-                <div *ngIf="f.submitted && !bonusTypeId.valid" class="help-block">Bonus type is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="price" class="control-label col-md-3">Price</label>
-            <div class="col-md-9">
-                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="model.price" #price="ngModel" required/>
-                <div *ngIf="f.submitted && !price.valid" class="help-block">Price is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-5">
-                <button [disabled] = "loading" class="btn btn-primary">Create</button>
-                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                <a [routerLink]="['/bonus/list']" class="btn btn-link">Cancel</a>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>

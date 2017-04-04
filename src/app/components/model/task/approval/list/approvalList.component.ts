@@ -6,7 +6,7 @@ import {TaskStatus} from "../../../../../model/taskStatus";
 @Component({
     selector: 'approval-list',
     templateUrl: 'approvalList.component.html',
-    styleUrls: ['approvalList.component.css']
+    styleUrls: ['approvalList.component.css', "../../list/taskList.component.css"]
 })
 
 export class ApprovalList implements OnInit {
