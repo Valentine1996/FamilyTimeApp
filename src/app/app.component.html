@@ -36,6 +36,12 @@
         </div>
         <div class="col-md-9" style="padding-top: 20px">
             <alert></alert>
+            <div *ngIf="loading" class="">
+                <div class="absolute-center"></div>
+                <span class="vh-center">
+                    <sk-circle></sk-circle>
+                </span>
+            </div>
             <router-outlet></router-outlet>
         </div>
     </div>

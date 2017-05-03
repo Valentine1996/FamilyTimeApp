@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Complexity} from "../../../../model/complexity";
 import {ComplexityService} from "../../../../services/complexityService";
+import {LoaderService} from "../../../../services/spinner.service";
 
 @Component({
     selector: 'complexity-list',
@@ -12,12 +13,15 @@ export class ComplexityList implements OnInit {
 
     complexities: Complexity[] = [];
 
-    constructor(private complexityService: ComplexityService) {
+    constructor(private complexityService: ComplexityService,
+                private loaderService : LoaderService) {
 
     }
 
     ngOnInit() {
+        this.loaderService.displayLoader(true);
         this.loadAllComplexities();
+        this.loaderService.displayLoader(false);
     }
 
     deleteComplexity(id: number) {

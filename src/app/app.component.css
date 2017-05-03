@@ -38,3 +38,19 @@ footer {
   }
   .row.content {height:auto;}
 }
+
+.absolute-center {
+  margin: auto;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-color: white;
+  opacity: 0.6;
+  z-index: 2999;
+}
+
+.vh-center {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  z-index: 3000;
+}

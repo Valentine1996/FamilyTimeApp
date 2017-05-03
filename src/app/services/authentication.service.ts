@@ -5,11 +5,12 @@ import {AlertService} from "./alert.service";
 import {Router} from "@angular/router";
 import {UserService} from "./user.service";
 import {HttpClient} from "../client/http.client";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthenticationService {
 
-    private loggedIn = false;
+    private loggedIn = true;
 
     private readonly reserveTime = 5;
 
@@ -26,61 +27,67 @@ export class AuthenticationService {
         }
     }
 
-    login(username: string, password: string) {
+    login (username: string, password: string) : Observable<{}> {
 
-        let headers = new Headers();
-        headers.append('Authorization', 'Basic ZmFtaWx5VGltZTpjaHJvbWVyaXZlcg==');
+        let result = new Observable(observer => {
+            let headers = new Headers();
+            headers.append('Authorization', 'Basic ZmFtaWx5VGltZTpjaHJvbWVyaXZlcg==');
 
-        headers.append("Content-Type", "application/x-www-form-urlencoded")
+            headers.append("Content-Type", "application/x-www-form-urlencoded")
 
-        var body = "username=" + username + "&password=" + password +
-            "&grant_type=password&client_id=familyTime&client_secret=chromeriver";
+            var body = "username=" + username + "&password=" + password +
+                "&grant_type=password&client_id=familyTime&client_secret=chromeriver";
 
-        this.http.post('/api/oauth/token', body, {headers : headers})
-            .map((response: Response) => response.json())
-            .subscribe(
-                data => {
+            this.http.post('/api/oauth/token', body, {headers: headers})
+                .map((response: Response) => response.json())
+                .subscribe(
+                    data => {
 
-                // store user's token details in local storage to keep user logged in and to allow requests to server
-                localStorage.setItem('tokenData', JSON.stringify(data));
+                        // store user's token details in local storage to keep user logged in and to allow requests to server
+                        localStorage.setItem('tokenData', JSON.stringify(data));
 
-                //Create date of token expiration
-                var expirationDate = new Date();
+                        //Create date of token expiration
+                        var expirationDate = new Date();
 
-                // console.log("Current date" + expirationDate);
+                        // console.log("Current date" + expirationDate);
 
-                //Subtract 5 seconds as reserve
-                expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime);
+                        //Subtract 5 seconds as reserve
+                        expirationDate.setSeconds(expirationDate.getSeconds() + Number(data.expires_in) - this.reserveTime);
 
-                //Save expiration date to local storage
-                localStorage.setItem('expirationDate', expirationDate.getTime().toString())
+                        //Save expiration date to local storage
+                        localStorage.setItem('expirationDate', expirationDate.getTime().toString())
 
-                // console.log("Current date + expiration" + expirationDate);
-                this.loggedIn = true;
-                //Save user's status to  local storage to                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           save it after refresh
-                localStorage.setItem('IsLoggedIn', 'true');
-                // set timeout to get valid access token
-                var expirationTime = data.expires_in;
+                        // console.log("Current date + expiration" + expirationDate);
+                        this.loggedIn = true;
+                        //Save user's status to  local storage to                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           save it after refresh
+                        localStorage.setItem('IsLoggedIn', 'true');
+                        // set timeout to get valid access token
+                        var expirationTime = data.expires_in;
 
-                setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5)  * 1000);
+                        setTimeout(this.getAccessTokenUsingRefreshOne.bind(this), (expirationTime - 5) * 1000);
 
-                    //Set user role
-                    this.userService.getLoggedUser().subscribe(
-                        data => {
-                            localStorage.setItem('parent', data.isParent);
+                        //Set user role
+                        this.userService.getLoggedUser().subscribe(
+                            data => {
+                                localStorage.setItem('parent', data.isParent);
 
-                            this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
-                        },
+                                observer.complete();
 
-                        error => { // No logged user
-                            this.alertService.error(error);
-                        }
-                    );
-                },
+                                this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
+                            },
 
-                error => {
-                    this.alertService.error(error);
-                });
+                            error => { // No logged user
+                                this.alertService.error(error);
+                            }
+                        );
+                    },
+
+                    error => {
+                        observer.error(error)
+                    });
+        });
+
+        return result;
     }
 
     getAccessTokenUsingRefreshOne() {
@@ -176,6 +183,6 @@ export class AuthenticationService {
 
             return isParent;
         }
-        return false;
+        return true;
     }
 }

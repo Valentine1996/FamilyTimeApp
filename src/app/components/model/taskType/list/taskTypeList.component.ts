@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TaskType} from "../../../../model/taskType";
 import {BonusTypeService} from "../../../../services/bonusTypeService";
 import {TaskTypeService} from "../../../../services/taskTypeService";
+import {LoaderService} from "../../../../services/spinner.service";
 
 @Component({
     selector: 'taskType-list',
@@ -13,12 +14,15 @@ export class TaskTypeList implements OnInit {
 
     taskTypes: TaskType[] = [];
 
-    constructor(private taskTypeService: TaskTypeService) {
+    constructor(private taskTypeService: TaskTypeService,
+                private loaderService : LoaderService) {
 
     }
 
     ngOnInit() {
+        this.loaderService.displayLoader(true);
         this.loadAllTaskTypes();
+        this.loaderService.displayLoader(false);
     }
 
     deleteTaskType(id: number) {
