@@ -56,11 +56,13 @@ export class RegisterComponent {
         this.userService.create(model)
             .subscribe(
                 data => {
+                    this.loaderService.displayLoader(false);
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
                 error => {
                     this.alertService.error(error);
+                    this.loaderService.displayLoader(false);
                     // this.loaderService.displayLoader(false);
                 });
     }
