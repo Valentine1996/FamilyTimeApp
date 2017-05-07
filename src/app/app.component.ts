@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {AuthenticationService} from "./services/authentication.service";
+import {LoaderService} from "./services/spinner.service";
 
 @Component({
   selector: 'my-app', // <my-app></my-app>
@@ -9,6 +10,13 @@ import {AuthenticationService} from "./services/authentication.service";
 })
 export class AppComponent {
 
-  constructor(public authService: AuthenticationService) {
+  loading = false;
+
+  constructor(public authService: AuthenticationService,
+              private loaderService : LoaderService) {
+        this.loaderService.loaderStatus.subscribe((val : boolean) => {
+        this.loading = val;
+    })
+
   }
 }

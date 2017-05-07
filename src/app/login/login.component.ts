@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../services/authentication.service";
 import {AlertService} from "../services/alert.service";
+import {LoaderService} from "../services/spinner.service";
 
 @Component({
     templateUrl: 'login.component.html',
@@ -11,21 +12,30 @@ import {AlertService} from "../services/alert.service";
 export class LoginComponent {
     model: any = {};
     loading = false;
+    errorMessage : String;
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) {
+        private loaderService : LoaderService) {
     }
 
     login() {
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password);
+        this.errorMessage = "";
 
-        // if(localStorage.getItem('access_token') == null){
-        //     this.loading = false;
-        // }
-        this.loading = false;
+        this.loaderService.displayLoader(true);
+        this.authenticationService.login(this.model.username, this.model.password)
+            .subscribe(
+                null,
+                error => {
+                    if(error.status === 400) {
+                        this.errorMessage = "Incorrect username or password";
+                    }
+
+                    this.loaderService.displayLoader(false);
+                },
+                () => {
+                    this.loaderService.displayLoader(false);
+                }
+            );
     }
 }

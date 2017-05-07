@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -10,10 +10,13 @@ import { AlertComponent } from './_directives/index'
 import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 import { DateTimePickerModule } from 'ng2-date-time-picker';
-
+import { CustomFormsModule } from 'ng2-validation'
+import * as spinner from 'ng2-spin-kit/app/spinners'
 
 import {RegisterComponent, InternalRegisterComponent} from "./register/index";
-import {AlertService, UserService, AuthenticationService, BonusTypeService, BonusService, TaskService} from "./services/index";
+import {AlertService, UserService, AuthenticationService,
+  BonusTypeService, BonusService, TaskService, TaskTypeService, ComplexityService, ValidationService,
+  LoaderService} from "./services/index";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
 import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //BonusType
@@ -26,8 +29,6 @@ import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //Bo
   ApprovalList, SingleApproval //Approvals
 } from "./components/model/index";
 import {HttpClient} from "./client/http.client";
-import {TaskTypeService} from "./services/taskTypeService";
-import {ComplexityService} from "./services/complexityService";
 import moment = require("moment");
 
 @NgModule({
@@ -35,8 +36,10 @@ import moment = require("moment");
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     routing,
-    DateTimePickerModule
+    DateTimePickerModule,
+    CustomFormsModule
   ],
   declarations: [
     AppComponent,
@@ -87,6 +90,9 @@ import moment = require("moment");
       /* Internal registration */
     InternalRegisterComponent,
     InternalUserList,
+
+      /* Spinner */
+    spinner.CircleComponent
   ],
   providers: [
     AlertService,
@@ -98,7 +104,9 @@ import moment = require("moment");
     TaskTypeService,
     BonusService,
     ComplexityService,
-    TaskService
+    TaskService,
+    ValidationService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })

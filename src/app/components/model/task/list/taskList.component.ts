@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Task} from "../../../../model/task";
 import {TaskService} from "../../../../services/taskService";
 import {TaskStatus} from "../../../../model/taskStatus";
+import {LoaderService} from "../../../../services/spinner.service";
 
 @Component({
     selector: 'task-list',
@@ -15,12 +16,15 @@ export class TaskList implements OnInit {
 
     currentTaskStatus : TaskStatus;
 
-    constructor(private taskService: TaskService) {
+    constructor(private taskService: TaskService,
+                private loaderService : LoaderService) {
        this.currentTaskStatus = TaskStatus.OPEN;
     }
 
     ngOnInit() {
+        this.loaderService.displayLoader(true);
         this.loadAllTasksByStatus(this.currentTaskStatus);
+        this.loaderService.displayLoader(false);
     }
 
     private loadAllTasksOnClick(status : any) {

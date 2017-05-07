@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BonusType} from "../../../../model/bonusType";
 import {BonusTypeService} from "../../../../services/bonusTypeService";
+import {LoaderService} from "../../../../services/spinner.service";
 
 @Component({
     selector: 'bonusType-list',
@@ -12,12 +13,15 @@ export class BonusTypeList implements OnInit {
 
     bonusTypes: BonusType[] = [];
 
-    constructor(private bonusTypeService: BonusTypeService) {
+    constructor(private bonusTypeService: BonusTypeService,
+                private loaderService : LoaderService) {
 
     }
 
     ngOnInit() {
+        this.loaderService.displayLoader(true);
         this.loadAllBonusTypes();
+        this.loaderService.displayLoader(false);
     }
 
     deleteBonusType(id: number) {
