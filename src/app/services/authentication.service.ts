@@ -73,7 +73,7 @@ export class AuthenticationService {
 
                                 observer.complete();
 
-                                this.router.navigate([{outlets: {primary: 'home', navigation: 'main'}}])
+                                this.router.navigate([{outlets: {primary: 'task/list', navigation: 'main'}}])
                             },
 
                             error => { // No logged user
