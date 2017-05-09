@@ -16,7 +16,6 @@ export class AppComponent {
               private loaderService : LoaderService) {
         this.loaderService.loaderStatus.subscribe((val : boolean) => {
         this.loading = val;
-    })
-
+    });
   }
 }
