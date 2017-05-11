@@ -6,8 +6,8 @@
         </div>
 
         <div class="panel-body panel-body-layout">
-            <div class="help-block" *ngIf="errorMessage">
-                {{errorMessage}}
+            <div class="help-block" *ngIf="error">
+                {{error}}
             </div>
             <form class="form-horizontal"class="form-horizontal" name="form" role="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
                 <div class="input-group input-group-layout">

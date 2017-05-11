@@ -12,7 +12,7 @@ import {LoaderService} from "../services/spinner.service";
 export class LoginComponent {
     model: any = {};
     loading = false;
-    errorMessage : String;
+    error : String;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -20,7 +20,7 @@ export class LoginComponent {
     }
 
     login() {
-        this.errorMessage = "";
+        this.error = "";
 
         this.loaderService.displayLoader(true);
         this.authenticationService.login(this.model.username, this.model.password)
@@ -28,7 +28,7 @@ export class LoginComponent {
                 null,
                 error => {
                     if(error.status === 400) {
-                        this.errorMessage = "Incorrect username or password";
+                        this.error = "Incorrect username or password";
                     }
 
                     this.loaderService.displayLoader(false);
