@@ -5,16 +5,14 @@ import {LoaderService} from "./services/spinner.service";
 
 @Component({
   selector: 'my-app', // <my-app></my-app>
-  templateUrl: './app.component.html',
-  styleUrls: ['app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
 
   loading = false;
 
-  constructor(public authService: AuthenticationService,
-              private loaderService : LoaderService) {
-        this.loaderService.loaderStatus.subscribe((val : boolean) => {
+  constructor( protected loaderService : LoaderService) {
+        loaderService.loaderStatus.subscribe((val : boolean) => {
         this.loading = val;
     });
   }

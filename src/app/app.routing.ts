@@ -1,9 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+import {Details} from './home/details.component';
 import { AboutComponent } from './about/about.component';
 import {RegisterComponent} from "./register/register.component";
-import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
 import {NavigationComponent} from "./navigation/navigation.component";
 import {BonusTypeList} from "./components/model/bonusType/list/bonusTypeList.component";
@@ -24,46 +23,65 @@ import {TaskList} from "./components/model/task/list/taskList.component";
 import {TaskCreate} from "./components/model/task/createForm/taskCreate.component";
 import {TaskUpdate} from "./components/model/task/updateForm/taskUpdate.component";
 import {ApprovalList} from "./components/model/task/approval/list/approvalList.component";
+import {LoginForm} from "./login/loginForm/loginForm.component";
+import {Login} from "./login/login.component";
+import {Dashboard} from "./components/dashboard/dashboard.component";
+import {Main} from "./components/dashboard/main/main.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'about', component: AboutComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'main', component: NavigationComponent, outlet:"navigation", canActivate: [AuthGuard]},
-    /* registarion routing*/
-  { path: 'login', component: LoginComponent},
-  { path: 'internalUser/list', component: InternalUserList, canActivate: [AuthGuard]},
-  { path: 'internalUser/create', component: InternalRegisterComponent, canActivate: [AuthGuard]},
-    /* Bonus type routing */
-  { path: 'bonusType/list', component: BonusTypeList, canActivate: [AuthGuard]},
-  { path: 'bonusType/update/:id', component: BonusTypeUpdate, canActivate: [AuthGuard]  },
-  { path: 'bonusType/create', component: BonusTypeCreate, canActivate: [AuthGuard] },
 
-  /* Task type routing */
-  { path: 'taskType/list', component: TaskTypeList, canActivate: [AuthGuard]},
-  { path: 'taskType/update/:id', component: TaskTypeUpdate, canActivate: [AuthGuard]  },
-  { path: 'taskType/create', component: TaskTypeCreate, canActivate: [AuthGuard] },
+    /* Login section */
+  { path: 'login', component: Login, children: [
 
-  /* Complexity routing */
-  { path: 'complexity/list', component: ComplexityList, canActivate: [AuthGuard]},
-  { path: 'complexity/update/:id', component: ComplexityUpdate, canActivate: [AuthGuard]  },
-  { path: 'complexity/create', component: ComplexityCreate, canActivate: [AuthGuard] },
+    {path: '', redirectTo: 'signin', pathMatch: 'full'},
+    {path: 'signin', component: LoginForm},
+    {path: 'details', component: Details },
+    {path: 'register', component: RegisterComponent }
 
-  /* Bonus routing */
-  { path: 'bonus/create', component: BonusCreate, canActivate: [AuthGuard] },
-  { path: 'bonus/list', component: BonusList, canActivate: [AuthGuard]},
-  { path: 'bonus/update/:id', component: BonusUpdate, canActivate: [AuthGuard]  },
+    ]
+  },
 
-  /* Task routing */
-  { path: 'task/list', component: TaskList, canActivate: [AuthGuard]},
-  { path: 'task/update/:id', component: TaskUpdate, canActivate: [AuthGuard]  },
-  { path: 'task/create', component: TaskCreate, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard], children: [
+      {path: '', redirectTo: 'main', pathMatch: 'full' },
+      {path: 'details', component: Details },
+      {path: 'main', component: Main, children: [
+          {path: '', redirectTo: 'task/list', pathMatch: 'full'},
+          {path: 'internalUser/list', component: InternalUserList},
+          {path: 'internalUser/register', component: InternalRegisterComponent},
+          /* Bonus type routing */
+          {path: 'bonusType/list', component: BonusTypeList},
+          {path: 'bonusType/update/:id', component: BonusTypeUpdate},
+          {path: 'bonusType/create', component: BonusTypeCreate},
 
-  /* Approval routing */
-  { path: 'approval/list', component: ApprovalList, canActivate: [AuthGuard]},
+          /* Task type routing */
+          {path: 'taskType/list', component: TaskTypeList},
+          {path: 'taskType/update/:id', component: TaskTypeUpdate},
+          {path: 'taskType/create', component: TaskTypeCreate},
 
-  // otherwise redirect to home
+          /* Complexity routing */
+          {path: 'complexity/list', component: ComplexityList},
+          {path: 'complexity/update/:id', component: ComplexityUpdate},
+          {path: 'complexity/create', component: ComplexityCreate},
+
+          /* Bonus routing */
+          {path: 'bonus/create', component: BonusCreate},
+          {path: 'bonus/list', component: BonusList},
+          {path: 'bonus/update/:id', component: BonusUpdate},
+
+          /* Task routing */
+          {path: 'task/list', component: TaskList},
+          {path: 'task/update/:id', component: TaskUpdate},
+          {path: 'task/create', component: TaskCreate},
+
+          /* Approval routing */
+          {path: 'approval/list', component: ApprovalList}
+        ]
+      },
+    ]
+  },
+  // otherwise redirect to login
   { path: '**', redirectTo: 'login' }
 ];
 

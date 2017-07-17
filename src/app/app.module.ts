@@ -4,10 +4,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AlertComponent } from './_directives/index'
-import { LoginComponent} from './login/index';
 import { routing } from './app.routing';
 import { DateTimePickerModule } from 'ng2-date-time-picker';
 import { CustomFormsModule } from 'ng2-validation'
@@ -29,7 +27,11 @@ import {BonusTypeList, BonusTypeUpdate, BonusTypeCreate, BonusTypeDropdown, //Bo
   ApprovalList, SingleApproval //Approvals
 } from "./components/model/index";
 import {HttpClient} from "./client/http.client";
-import moment = require("moment");
+import {Details} from "./home/details.component";
+import {Login} from "./login/login.component";
+import {LoginForm} from "./login/loginForm/loginForm.component";
+import {Dashboard} from "./components/dashboard/dashboard.component";
+import {Main} from "./components/dashboard/main/main.component";
 
 @NgModule({
   imports: [
@@ -43,12 +45,15 @@ import moment = require("moment");
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
+    Details,
     AboutComponent,
     RegisterComponent,
-    LoginComponent,
+    Login,
+    LoginForm,
     AlertComponent,
     NavigationComponent,
+    Dashboard,
+    Main,
 
       /* Bonus Type */
     BonusTypeList,

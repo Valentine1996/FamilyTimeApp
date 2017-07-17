@@ -13,11 +13,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-layout" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="['details']" >About</a></li>
+                <li><a [routerLink]="['main']">Main</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['register']">Register</a></li>
-                <li><a [routerLink]="['login']"><span></span>Login</a></li>
+                <li><a (click)=authService.logout() >Log Out</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -27,18 +26,15 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12" style="padding-top: 20px">
-            <alert></alert>
-            <div *ngIf="loading" class="">
-                <div class="absolute-center"></div>
-                <span class="vh-center">
+        <alert></alert>
+        <div *ngIf="loading" class="">
+            <div class="absolute-center"></div>
+            <span class="vh-center">
                     <sk-circle></sk-circle>
                 </span>
-            </div>
-            <router-outlet></router-outlet>
         </div>
+        <router-outlet></router-outlet>
     </div>
-
     <!-- Footer -->
 </div>
 

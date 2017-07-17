@@ -3,6 +3,7 @@ import {Task} from "../../../../model/task";
 import {TaskService} from "../../../../services/taskService";
 import {TaskStatus} from "../../../../model/taskStatus";
 import {LoaderService} from "../../../../services/spinner.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'task-list',
@@ -17,7 +18,8 @@ export class TaskList implements OnInit {
     currentTaskStatus : TaskStatus;
 
     constructor(private taskService: TaskService,
-                private loaderService : LoaderService) {
+                private loaderService: LoaderService,
+                private router: Router) {
        this.currentTaskStatus = TaskStatus.OPEN;
     }
 
