@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService} from "../../services/authentication.service";
-import {LoaderService} from "../../services/spinner.service";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {LoaderService} from "../../../services/spinner.service";
 
 @Component({
     templateUrl: 'loginForm.component.html',
-    styleUrls: ['../../style/common/form/form.css']
+    styleUrls: ['../../../style/common/form/form.css']
 })
 
 export class LoginForm {
