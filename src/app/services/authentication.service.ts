@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class AuthenticationService {
 
-    private loggedIn = true;
+    private loggedIn = false;
 
     private readonly reserveTime = 5;
 
@@ -73,7 +73,7 @@ export class AuthenticationService {
 
                                 observer.complete();
 
-                                this.router.navigate([{outlets: {primary: 'task/list', navigation: 'main'}}])
+                                this.router.navigate(['/dashboard/main']);
                             },
 
                             error => { // No logged user
