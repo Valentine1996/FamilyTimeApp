@@ -1,15 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import {Details} from './home/details.component';
-import { AboutComponent } from './about/about.component';
-import {RegisterComponent} from "./register/register.component";
+import {Details} from './components/details/details.component';
+import {RegisterComponent} from "./components/registration/register.component";
 import {AuthGuard} from "./auth.guard";
-import {NavigationComponent} from "./navigation/navigation.component";
 import {BonusTypeList} from "./components/model/bonusType/list/bonusTypeList.component";
 import {BonusTypeUpdate} from "./components/model/bonusType/updateForm/bonusTypeUpdate.component";
 import {BonusTypeCreate} from "./components/model/bonusType/createForm/bonusTypeCreate.component";
 import {InternalUserList} from "./components/model/internalUser/list/internalUserList.component";
-import {InternalRegisterComponent} from "./register/internal/internalRegister.component";
+import {InternalRegisterComponent} from "./components/registration/internal/internalRegister.component";
 import {BonusCreate} from "./components/model/bonus/createForm/bonusCreate.component";
 import {BonusList} from "./components/model/bonus/list/bonusList.component";
 import {BonusUpdate} from "./components/model/bonus/updateForm/bonusUpdate.component";
@@ -23,14 +21,13 @@ import {TaskList} from "./components/model/task/list/taskList.component";
 import {TaskCreate} from "./components/model/task/createForm/taskCreate.component";
 import {TaskUpdate} from "./components/model/task/updateForm/taskUpdate.component";
 import {ApprovalList} from "./components/model/task/approval/list/approvalList.component";
-import {LoginForm} from "./login/loginForm/loginForm.component";
-import {Login} from "./login/login.component";
+import {LoginForm} from "./components/login/loginForm/loginForm.component";
+import {Login} from "./components/login/login.component";
 import {Dashboard} from "./components/dashboard/dashboard.component";
 import {Main} from "./components/dashboard/main/main.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'about', component: AboutComponent},
 
     /* Login section */
   { path: 'login', component: Login, children: [
