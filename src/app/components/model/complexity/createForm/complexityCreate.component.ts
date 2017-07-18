@@ -48,7 +48,7 @@ export class ComplexityCreate implements OnInit{
             .subscribe(
                 data => {
                     this.alertService.success('Created successful', true);
-                    this.router.navigate(['/complexity/list']);
+                    this.router.navigate(['../list'], {relativeTo: this.route});
                     this.loaderService.displayLoader(false);
                 },
                 error => {

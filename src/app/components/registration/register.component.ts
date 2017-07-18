@@ -6,6 +6,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ValidationService} from "../../services/validation.service";
 import {CustomValidators} from 'ng2-validation';
 import {LoaderService} from "../../services/spinner.service";
+import moment = require("moment");
 
 @Component({
     templateUrl: 'register.component.html',
@@ -48,6 +49,9 @@ export class RegisterComponent {
         this.loaderService.displayLoader(true);
 
         let model = formGroup.value;
+
+        //Format birthday
+        model.birthday = moment(model.birthday.jsdate).format("YYYY-MM-DD");
         let locale = require('browser-locale');
 
         //get user's locale

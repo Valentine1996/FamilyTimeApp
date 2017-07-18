@@ -77,7 +77,7 @@ export class BonusTypeUpdate implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Updated successful', true);
-                    this.router.navigate(['/bonusType/list']);
+                    this.router.navigate(['../../list'], {relativeTo: this.route});
                     this.loaderService.displayLoader(false);
                 },
                 error => {

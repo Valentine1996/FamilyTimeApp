@@ -23,7 +23,7 @@
                     <td>{{bonus.bonusType.shortName}}</td>
                     <td>{{bonus.description}}</td>
                     <td>{{bonus.price}}</td>
-                    <td class="td-icon"><a [routerLink]="['/bonus/update', bonus.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td class="td-icon"><a [routerLink]="['../update', bonus.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
                     <td class="td-icon"><a (click)="deleteBonus(bonus.id)"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
                 </tbody>
