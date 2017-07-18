@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from "../../../services/user.service";
 import {AlertService} from "../../../services/alert.service";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {ValidationService} from "../../../services/validation.service";
 import {LoaderService} from "../../../services/spinner.service";
 import {CustomValidators} from "ng2-validation";
+import moment = require("moment");
 
 @Component({
     templateUrl: 'internalRegister.component.html'
@@ -22,7 +23,10 @@ export class InternalRegisterComponent {
         private alertService: AlertService,
         private formBuilder: FormBuilder,
         private validationService : ValidationService,
-        private loaderService : LoaderService) { }
+        private loaderService: LoaderService,
+        private activatedRoute: ActivatedRoute) {
+
+    }
 
     buildForm() {
         this.registrationForm = this.formBuilder.group({
@@ -53,11 +57,14 @@ export class InternalRegisterComponent {
         //Set user's locale
         model.locale = locale();
 
+        //Format birthday
+        model.birthday = moment(model.birthday.jsdate).format("YYYY-MM-DD");
+
         this.userService.createFromApp(model)
             .subscribe(
                 data => {
                     this.alertService.success('Added successful', true);
-                    this.router.navigate(['/internalUser/list']);
+                    this.router.navigate(['../list'], {relativeTo: this.activatedRoute});
                     this.loaderService.displayLoader(false);
                 },
                 error => {

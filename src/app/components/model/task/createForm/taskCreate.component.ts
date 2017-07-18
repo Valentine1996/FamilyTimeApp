@@ -39,7 +39,8 @@ export class TaskCreate implements OnInit {
         private taskTypeService : TaskTypeService,
         private complexityService : ComplexityService,
         private userService : UserService,
-        private alertService: AlertService) {}
+        private alertService: AlertService,
+        private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.loadAllBonuses();
@@ -57,7 +58,7 @@ export class TaskCreate implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Created successful', true);
-                    this.router.navigate(['/task/list']);
+                    this.router.navigate(['../list'], {relativeTo: this.route});
                 },
                 error => {
                     this.loading = false;

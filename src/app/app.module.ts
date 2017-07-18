@@ -31,6 +31,7 @@ import {Dashboard} from "./components/dashboard/dashboard.component";
 import {Main} from "./components/dashboard/main/main.component";
 import {AlertComponent} from "./components/alert/alert.component";
 import {NavigationMain} from "./components/navigation/main/navigation.component";
+import {MyDatePickerModule} from "mydatepicker";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import {NavigationMain} from "./components/navigation/main/navigation.component"
     ReactiveFormsModule,
     routing,
     DateTimePickerModule,
-    CustomFormsModule
+    CustomFormsModule,
+    MyDatePickerModule
   ],
   declarations: [
     AppComponent,

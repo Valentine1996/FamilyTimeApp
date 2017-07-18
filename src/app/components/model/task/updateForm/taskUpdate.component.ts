@@ -82,7 +82,7 @@ export class TaskUpdate implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Updated successful', true);
-                    this.router.navigate(['/task/list']);
+                    this.router.navigate(['../../list'], {relativeTo: this.route});
                 },
                 error => {
                     this.loading = false;

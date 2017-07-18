@@ -49,7 +49,7 @@ export class BonusTypeCreate implements OnInit{
             .subscribe(
                 data => {
                     this.alertService.success('Created successful', true);
-                    this.router.navigate(['/bonusType/list']);
+                    this.router.navigate(['../list'], {relativeTo: this.route});
                 },
                 error => {
                     this.alertService.error(error);

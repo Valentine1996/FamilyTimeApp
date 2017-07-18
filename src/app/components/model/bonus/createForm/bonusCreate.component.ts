@@ -25,7 +25,8 @@ export class BonusCreate implements OnInit {
         private formBuilder: FormBuilder,
         private validationService : ValidationService,
         private loaderService : LoaderService,
-        private alertService: AlertService) {}
+        private alertService: AlertService,
+        private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.loadAllBonusTypes();
@@ -55,7 +56,7 @@ export class BonusCreate implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Created successful', true);
-                    this.router.navigate(['/bonus/list']);
+                    this.router.navigate(['../list'], {relativeTo: this.route});
                     this.loaderService.displayLoader(false);
 
                 },

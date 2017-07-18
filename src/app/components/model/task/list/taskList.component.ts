@@ -15,6 +15,8 @@ export class TaskList implements OnInit {
 
     tasks: Task[] = [];
 
+    const
+
     currentTaskStatus : TaskStatus;
 
     constructor(private taskService: TaskService,
@@ -30,7 +32,7 @@ export class TaskList implements OnInit {
     }
 
     private loadAllTasksOnClick(status : any) {
-        if(status.target.value == "OPEN"){
+        if(status.target.value == "OPEN") {
             this.currentTaskStatus = TaskStatus.OPEN;
 
             this.loadAllTasksByStatus(this.currentTaskStatus);

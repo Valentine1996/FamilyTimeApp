@@ -61,7 +61,9 @@
                 <div class="form-group">
                     <label for="birthday" class="control-label col-md-3">Birthday</label>
                     <div class="col-md-9">
-                        <input type="date" class="form-control" id="birthday" name="birthday" formControlName="birthday"/>
+                        <my-date-picker type="date" id="birthday" name="birthday" formControlName="birthday">
+
+                        </my-date-picker>
                         <div class="help-block">
                             <ul>
                                 <li *ngFor="let message of formErrors.birthday">{{message}}</li>
